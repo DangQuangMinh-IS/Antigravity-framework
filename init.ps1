@@ -52,4 +52,30 @@ Get-ChildItem -Path (Join-Path $Kit ".agents") -Recurse | ForEach-Object {
     }
 }
 
+# Copy docs recursively without overwriting existing files
+$KitDocs = Join-Path $Kit "docs"
+if (Test-Path -Path $KitDocs) {
+    $DocsDir = Join-Path $Target "docs"
+    if (-not (Test-Path -Path $DocsDir)) {
+        New-Item -ItemType Directory -Path $DocsDir -Force | Out-Null
+    }
+    Get-ChildItem -Path $KitDocs -Recurse | ForEach-Object {
+        $RelativePath = $_.FullName.Substring($KitDocs.Length + 1)
+        $DestinationPath = Join-Path $DocsDir $RelativePath
+
+        if ($_.PSIsContainer) {
+            if (-not (Test-Path -Path $DestinationPath)) {
+                New-Item -ItemType Directory -Path $DestinationPath -Force | Out-Null
+            }
+        } else {
+            if (Test-Path -Path $DestinationPath) {
+                Write-Host "skip (exists): docs/$RelativePath"
+            } else {
+                Copy-Item -Path $_.FullName -Destination $DestinationPath
+                Write-Host "added: docs/$RelativePath"
+            }
+        }
+    }
+}
+
 Write-Host "Done. Next: fill in $Target\PROJECT.md (or ask the agent to draft it from the repo)."

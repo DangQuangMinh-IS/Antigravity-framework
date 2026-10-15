@@ -36,6 +36,8 @@ Name frameworks but not exact versions; the lockfile/manifest is the source of t
 └── ...
 ```
 ## Documentation & Knowledge Base (Internal)
+> *This registry adapts to each project. Add domain-specific rows as needed (e.g. `docs/runbooks/` for DevOps, `docs/experiments/` for ML, `docs/compliance/` for Fintech) or write `none` if a category does not apply.*
+
 | Type | Path / Location | Purpose |
 |---|---|---|
 | Architecture / ADR | `docs/adr/` or `docs/architecture/` | Technical decisions & trade-offs |

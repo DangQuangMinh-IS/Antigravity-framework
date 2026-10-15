@@ -17,6 +17,11 @@ When investigating or resolving conflicting requirements, prioritize in this ord
 4. **External Context:** PRDs (Notion/Confluence), UI/UX designs (Figma/Miro), issue trackers (Jira/Linear/GitHub Issues).
 *Note:* External specs often drift from code. If an external requirement contradicts live code or database schema, flag the discrepancy to the user before implementing.
 
+### Documentation Evolution & Extensibility
+The `docs/` directory is adaptive, not rigid:
+- When introducing domain-specific documentation (e.g. `docs/runbooks/` for SRE, `docs/experiments/` for ML, `docs/compliance/` for Fintech), register the new path and purpose in the `Documentation & Knowledge Base` table of `PROJECT.md`.
+- If a document category is irrelevant to the project (e.g. `docs/api/` for a pure CLI tool), mark it as `none` in `PROJECT.md` and do not generate unused folders.
+
 ## Language
 
 - Code, comments, docstrings, commit messages, technical docs: English.

@@ -14,6 +14,10 @@ init.ps1           Windows PowerShell init script (copies kit without overwritin
   rules/           loaded by context: coding, testing, security, data
   skills/          loaded by task: spec, architect, build, debug, review, db-migration
   tasks/           active execution plans (auto-archived to tasks/archive/ upon DoD)
+docs/                starter & domain documentation (adaptive)
+  adr/               architectural decision records (0000-template.md)
+  specs/             feature specifications (TEMPLATE.md)
+  api/               API definitions and schemas (README.md)
 ```
 ## Use
 
